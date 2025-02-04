@@ -1,0 +1,489 @@
+@font-face {
+    font-family: m1;
+    src: url(./Ubuntu-Regular.ttf);
+}
+* {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-1);
+    box-sizing: border-box;
+
+}
+
+:root {
+    --theme: #1e90ff;
+
+    --t1: #f0f8ff;
+    --t3: #111;
+    --white: #fff;
+    --black: #000000;
+
+    --n-black:#111;
+    --n-white:#fff;
+
+
+
+    --font-1: m1 ;
+    --font-2: "Outfit", serif;
+    --font-3: 'Cairo', sans-serif;
+
+
+    --animation-primary: all .5s cubic-bezier(.7, 0, .3, 1);
+    --animation-fast: all .3s cubic-bezier(.7, 0, .3, 1);
+    --animation-smooth: all .7s cubic-bezier(.7, 0, .3, 1);
+    --animation-slow: all .9s cubic-bezier(.7, 0, .3, 1);
+
+    --border: 25px;
+}
+/* Dark mode variables */
+body.dark-mode {
+    --theme: #1e90ff;
+    
+    --t1: #f0f8ff;;
+    --t3: #efefef;
+    --white: #000;
+    --black: #fff;
+    --transparent:#fff;
+    
+}
+::-webkit-scrollbar {
+    width: 1px;
+  }
+
+
+
+html,
+body{
+   height: 100%;
+   width: 100%;
+   scroll-behavior: smooth;
+}
+body{
+    transition: var(--animation-primary);
+}
+#main{
+    overflow: hidden;
+    position: relative;
+}
+
+nav {
+    /* background-color: var(--transparent); */
+    height: 14vh;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--font-3);
+    position: absolute;
+    top: 0;
+    z-index: 10;
+
+
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    padding: 3rem;
+    position: relative;
+}
+
+.logo p {
+    transition: var(--animation-primary);
+    white-space: nowrap;
+    color: var(--black);
+}
+
+
+.logo #logo::selection {
+    background-color: transparent;
+}
+
+.logo p::selection {
+    background-color: transparent;
+}
+
+#sec-1 span::selection {
+    background-color: transparent;
+}
+
+#sec-2 .content-work > p::selection {
+    background-color: transparent;
+}
+
+
+
+/* Optional: Apply to the entire page */
+::selection {
+    background-color: #5404ff9e
+}
+
+
+
+.logo #logo {
+    height: 3rem;
+    padding: 0 .15rem;
+    transition: var(--animation-primary);
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 2rem;
+    list-style-type: none;
+    font-size: 1.2rem;
+    gap: 1rem;
+
+}
+
+.btn {
+    padding: 1rem 1.5rem;
+    text-transform: capitalize;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: var(--animation-smooth);
+    border-radius: 50px;
+    overflow: hidden;
+    z-index: 1;
+    font-weight: 400;
+    outline: none;
+    border: none;
+}
+.btn-color{
+    transition: var(--animation-smooth);
+    background-color: var(--t1);
+    color: var(--n-black);
+    
+}
+.btn:hover {
+    color: var(--white);
+
+}
+
+.btn:hover::before {
+    top: 0;
+    border-radius: 0;
+}
+
+.btn::before {
+    content: "";
+    height: 120%;
+    width: 150%;
+    background-color: var(--black);
+    position: absolute;
+    top: 110%;
+    transition: var(--animation-smooth);
+    border-radius: 50%;
+    z-index: -1;
+}
+
+nav ul li::selection {
+    background-color: transparent;
+}
+
+nav ul li:nth-child(2) {
+    border-radius: 50px;
+    padding: 1.5rem;
+}
+nav ul li:nth-child(1) {
+    border-radius: 50%;
+    padding: 1rem;
+}
+.hidden {
+    display: none;
+}
+
+#moonSun img {
+    width: 35px;
+    height: 35px;
+    transition: fill 0.3s ease, color 0.3s ease;
+}
+#moonSun .sun,
+#moonSun .moon{
+    transition: var(--animation-smooth);
+}
+
+
+/* Default Light Mode */
+#moonSun:hover img.moon {
+    filter: brightness(0) saturate(100%) invert(100%); /* White */
+}
+
+#moonSun:hover img.sun {
+    filter: brightness(0) saturate(100%) invert(100%);}
+
+/* Dark Mode */
+body.dark-mode #moonSun img.sun {
+    filter: none;  
+}
+
+/* Hover behavior in dark mode */
+body.dark-mode #moonSun:hover img.sun {
+    filter: invert(100%) brightness(0) saturate(100%); /* Sun icon turns black on hover */
+}
+
+/* Hide the sun or moon in light/dark mode */
+.hidden {
+    display: none;
+}
+#menu {
+    height: 5rem;
+    width: 5rem;
+    font-size: 1.5rem;
+    position: fixed;
+    top: 5%;
+    right: 3%;
+    border-radius: 50%;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 25;
+}
+
+#menu-box {
+    height: 100vh;
+    width: 36rem;
+    background-color: var(--black);
+    position: fixed;
+    right: 0;
+    top: 0;
+    transform: translateX(100%);
+    transition: var(--animation-slow);
+    z-index: 9998;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-flow: column;
+    border-top-left-radius: 100%;
+    border-bottom-left-radius: 100%;
+    z-index: 10;
+    padding: 0 5rem;
+}
+
+.tag-line{
+    color: var(--white);
+    font-family: var(--font-1);
+    text-transform: uppercase;
+    padding: 0 0 1rem 0 ; 
+    font-weight: 800;
+    /* letter-spacing: 5px; */
+}
+.divider-nav{
+    width: 100%;
+    /* height: 5px; */
+    background-color: var(--white);
+    padding: .04rem;
+    margin: 0 0 3rem 0;
+}
+
+.divider{
+    width: 100%;
+    /* height: 5px; */
+    background-color: var(--white);
+    padding: .04rem;
+    margin: 0 0 3rem 0;
+    transition: var(--animation-slow);
+}
+
+.divider:hover{
+    width: 100%;
+}
+#menu-box  > ul{
+    /* padding: 0 4rem; */
+    font-size: 3.5rem;
+    list-style-type: none;
+}
+#menu-box > ul li svg{
+    height: 3vw;
+    position: relative;
+    top: 0.5rem;
+    padding: 1rem;
+}
+#menu-box > ul li a{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+text-decoration: none;
+color: var(--white);
+    text-transform: capitalize;
+}
+.social-media{
+    /* background-color: var(--n-white); */
+    width: 100%;
+    position: absolute;
+    bottom: 4%;
+
+}
+
+.social-media ul{
+    display: flex;
+    gap: 2rem;
+list-style-type: none;
+}
+.social-media ul a{
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 100;
+  text-transform: capitalize;
+}
+
+
+/* Section 1 */
+
+.page{
+    height: 100vh;
+    width: 100%;
+}
+#sec-1{
+    background-color: var(--white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+position: relative;
+}
+
+#sec-1 div div {
+    display: flex;
+    align-items: center;
+
+}
+.break {
+    display: block;
+    margin-bottom: 20px;
+    letter-spacing: 5px; /* Adjust space between letters */
+    word-spacing: 5px;   /* Adjust space between words */
+}
+
+.break span {
+    display: inline-block;
+    color: var(--black);
+    font-weight: 800;
+
+}
+
+#sec-1 h1 {
+    font-family: var(--font-1);
+    text-transform: uppercase;
+    font-size: 8vw;
+
+    /* overflow: hidden; */
+}
+
+#sec-1 h1 span {
+    display: inline-block;
+    
+
+}
+
+#sec-1 div div>svg {
+    height: 9vw;
+    color: var(--theme);
+    padding: 1rem;
+}
+
+
+/* Section 2 */
+#sec-2{
+    padding: 8rem 2rem;
+    background-color: var(--t3);
+    display: grid;
+    grid-template-columns: 80% 20%;
+    position: relative;
+    overflow: hidden;
+}
+
+#sec-2 .text-con{
+    font-size: 4rem;
+    padding: 0 5rem;
+    color: var(--white);
+}
+.text-con,
+.lates-work{
+    position: relative;
+    z-index: 2;
+}
+.content-work{
+    color: var(--white);
+    font-weight: 100;
+}
+#sec-2 .image{
+    height: 200px;
+    width: 100%;
+    background-color: #111;
+    border-radius: 20px;
+    margin: 1rem 0 1rem 0;
+}
+#hero-shape {
+    position: absolute;
+    width: 46vw;
+    height: 46vw;
+    right: -5em;
+    top: -1em;
+    z-index: 1;
+}
+
+#hero-1 {
+    background-color: #1e90ff;
+    height: 100%;
+    width: 100%;
+    border-top-left-radius: 50%;
+    border-bottom-left-radius: 50%;
+    filter: blur(10px);
+    position: absolute;
+}
+
+#hero-2 {
+    background: linear-gradient(#1e90ff, #0b82f9);
+
+    height: 30vw;
+    width: 30vw;
+    border-radius: 50%;
+    position: absolute;
+    animation-name: anime2;
+    animation-duration: 5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    filter: blur(25px);
+}
+
+#hero-3 {
+    background: linear-gradient(#1e90ff, #0b82f9);
+    height: 30vw;
+    position: absolute;
+    width: 30vw;
+    border-radius: 50%;
+    filter: blur(25px);
+    animation-name: anime1;
+    animation-duration: 5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes anime1 {
+    from {
+        transform: translate(55%, -3%);
+    }
+
+    to {
+        transform: translate(0%, 10%);
+    }
+}
+
+@keyframes anime2 {
+    from {
+        transform: translate(5%, -5%);
+    }
+
+    to {
+        transform: translate(-20%, 30%);
+    }
+}
