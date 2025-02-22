@@ -1,0 +1,51 @@
+@media only screen and (min-width: 0px) and (max-width: 500px) {
+    
+    nav{
+        background-color: aqua;
+        height: fit-content;
+    }
+    .logo p {
+        transition: var(--animation-primary);
+        white-space: nowrap;
+        color: var(--black);
+        display: none;
+    }
+    
+    #sec-1 div div>svg {
+        height: 9vh;
+        color: var(--theme);
+        padding: 1rem;
+    }
+    .break {
+        margin: 0;
+    }
+    #menu-box {
+        width: 100%;
+    }
+    .social-media{
+        /* background-color: var(--white); */
+        width: 100%;
+        position: absolute;
+        bottom: 8%;
+    
+    }
+    
+    .social-media ul{
+        display: flex;
+        flex-wrap: wrap;
+        gap: .9rem;
+    list-style-type: none;
+    }
+    #sec-2{
+        height: fit-content;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     flex-flow: column;
+     padding: 2rem 4rem;
+    }
+    
+#sec-2 .text-con{
+   display: none;
+}
+ }
