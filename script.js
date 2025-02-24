@@ -1,14 +1,14 @@
 
 {
   // Initialize Lenis
-  // const lenis = new Lenis({
-  //   autoRaf: true,
-  // });
+  const lenis = new Lenis({
+    autoRaf: true,
+  });
 
-  // // Listen for the scroll event and log the event data
-  // lenis.on('scroll', (e) => {
-  //   console.log(e);
-  // });
+  // Listen for the scroll event and log the event data
+  lenis.on('scroll', (e) => {
+    console.log(e);
+  });
 
 
 }
@@ -121,9 +121,6 @@
     }
   });
 
-
-
-
   const progressBar = document.querySelector(".progress-bar");
   
   window.addEventListener("scroll", () => {
@@ -133,15 +130,25 @@
   
       progressBar.style.width = scrolled + "%";
   
-      // If scrolled more than 10%, show the button, else hide it
+      const menuTransform = window.getComputedStyle(menuBox).transform;
+  
+      // If menuBox is open (translateX(0%)), always keep menuBtn visible
+      if (menuTransform === "matrix(1, 0, 0, 1, 0, 0)") {
+          menuBtn.style.transform = "scale(1)";
+          menuBtn.style.opacity = "100%";
+          return;
+      }
+  
+      // If menuBox is closed (translateX(100%)), only show menuBtn if scrolled > 10%
       if (scrolled > 10) {
           menuBtn.style.transform = "scale(1)";
           menuBtn.style.opacity = "100%";
-        } else {
+      } else {
           menuBtn.style.transform = "scale(0)";
           menuBtn.style.opacity = "0%";
       }
   });
+  
   
 }
 
