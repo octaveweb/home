@@ -80,7 +80,22 @@ nav {
 
 
 }
-
+.progress-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1vh;
+    background: rgb(254, 0, 0);
+    z-index: 100;
+    display: none;
+}
+.progress-bar {
+    width: 0%;
+    height: 100%;
+    background: #1e90ff;
+    transition: width 0.1s ease-out;
+}
 .logo {
     display: flex;
     justify-content: center;
@@ -232,7 +247,7 @@ body.dark-mode #moonSun:hover img.sun {
 .hidden {
     display: none;
 }
-#menu {
+#menuBtn {
     height: 5rem;
     width: 5rem;
     font-size: 1.5rem;
@@ -245,7 +260,11 @@ body.dark-mode #moonSun:hover img.sun {
     justify-content: center;
     align-items: center;
     z-index: 25;
+    transition: var(--animation-slow);
+    transform: scale(0);
+    opacity: 0%;
 }
+
 
 #menu-box {
     height: 100vh;
