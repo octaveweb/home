@@ -12,7 +12,37 @@
 
 
 }
+{
+  gsap.registerPlugin(TextPlugin);
 
+  const typingText = document.getElementById("typingText");
+  const texts = ["CTIVE AI","CTIVE WEB"];
+  let index = 0;
+  
+  function typeAndDelete() {
+      gsap.to(typingText, {
+          duration: 4,
+          text: texts[index],
+          ease: "power2.inOut",
+          onComplete: () => {
+              setTimeout(() => {
+                  gsap.to(typingText, {
+                      duration: 2,
+                      text: "",
+                      ease: "power2.inOut",
+                      onComplete: () => {
+                          index = (index + 1) % texts.length;
+                          setTimeout(typeAndDelete, 500);
+                      }
+                  });
+              }, 2000);
+          }
+      });
+  }
+  
+  typeAndDelete();
+  
+}
 // DarkToLight Switch
 {
   const moonSun = document.getElementById("moonSun");
