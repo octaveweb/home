@@ -339,10 +339,11 @@ body.dark-mode #moonSun:hover img.sun {
     list-style-type: none;
 }
 #menu-box > ul li svg{
-    height: 3vw;
+    height: 4vw;
     position: relative;
     top: 0.5rem;
     padding: 1rem;
+    opacity: 50%;
 }
 #menu-box > ul li a{
     display: flex;
