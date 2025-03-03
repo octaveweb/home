@@ -179,7 +179,6 @@ nav ul {
     text-decoration: none;
     color: var(--black);
     background: transparent;
-    border: 1px solid var(--black);
     overflow: hidden;
     transition: color 0.3s;
     cursor: pointer;
