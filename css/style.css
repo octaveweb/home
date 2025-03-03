@@ -173,6 +173,28 @@ nav ul {
 
 }
 
+.magnetic-button {
+    position: relative;
+    font-weight: 500;
+    text-decoration: none;
+    color: var(--black);
+    background: transparent;
+    border: 1px solid var(--black);
+    overflow: hidden;
+    transition: color 0.3s;
+    cursor: pointer;
+}
+
+.magnetic-button .button-text {
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    transition: transform 0.2s ease-out;
+}
+
+
+
+
 .btn {
     padding: 1rem 1.5rem;
     text-transform: capitalize;
