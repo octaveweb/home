@@ -1,18 +1,18 @@
 // Privinting right click and keybord shortcut
-function preventTofightClick(){
-  document.addEventListener("contextmenu", (e) => e.preventDefault()); // Disable right-click
+// function preventTofightClick(){
+//   document.addEventListener("contextmenu", (e) => e.preventDefault()); // Disable right-click
     
-document.addEventListener("keydown", (e) => {
-    if (
-        e.ctrlKey && (e.key === "u" || e.key === "U" || e.key === "s" || e.key === "S" || e.key === "p" || e.key === "P") || // Ctrl+U, Ctrl+S, Ctrl+P
-        e.ctrlKey && e.shiftKey && (e.key === "i" || e.key === "I" || e.key === "j" || e.key === "J") || // Ctrl+Shift+I, Ctrl+Shift+J
-        e.key === "F12" // F12
-    ) {
-        e.preventDefault();
-    }
-});
-}
-preventTofightClick();
+// document.addEventListener("keydown", (e) => {
+//     if (
+//         e.ctrlKey && (e.key === "u" || e.key === "U" || e.key === "s" || e.key === "S" || e.key === "p" || e.key === "P") || // Ctrl+U, Ctrl+S, Ctrl+P
+//         e.ctrlKey && e.shiftKey && (e.key === "i" || e.key === "I" || e.key === "j" || e.key === "J") || // Ctrl+Shift+I, Ctrl+Shift+J
+//         e.key === "F12" // F12
+//     ) {
+//         e.preventDefault();
+//     }
+// });
+// }
+// preventTofightClick();
 // Initialize Lenis
 const lenis = new Lenis({ autoRaf: true });
 lenis.on("scroll", console.log);
@@ -21,7 +21,7 @@ lenis.on("scroll", console.log);
 gsap.registerPlugin(TextPlugin);
 
 const typingText = document.getElementById("typingText");
-const texts = [ "CTIVE WEB","CTIVE AI"];
+const texts = [ "CTIVE WEB","PORTFOLIO.."];
 let index = 0;
 
 function typeAndDelete() {

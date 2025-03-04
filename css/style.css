@@ -192,8 +192,6 @@ nav ul {
 }
 
 
-
-
 .btn {
     padding: 1rem 1.5rem;
     text-transform: capitalize;
@@ -222,7 +220,7 @@ nav ul {
 }
 
 .btn:hover::before {
-    top: 0;
+    bottom:  0;
     border-radius: 0;
 }
 
@@ -232,12 +230,11 @@ nav ul {
     width: 150%;
     background-color: var(--black);
     position: absolute;
-    top: 110%;
+    bottom:  -120%;
     transition: var(--animation-smooth);
-    border-radius: 50%;
+    border-radius: 120%;
     z-index: -1;
 }
-
 nav ul li::selection {
     background-color: transparent;
 }
@@ -414,6 +411,7 @@ position: relative;
     width: 100%;
     height: 100vh;
     position: relative;
+    background-color: var(--white);
   }
   .slide {
     position: absolute;
@@ -554,6 +552,109 @@ position: relative;
 
 
 #sec-3{
-    height: 100vh;
+    height: fit-content;
     width: 100%;
+}
+#sec-3 .text-con{
+       display: grid;
+        grid-template-columns: 70% 30%;
+        grid-template-rows: 40% 60%;
+        gap: 2rem;
+        padding: 10rem 5rem 0 5rem;
+        /* background-color: blueviolet; */
+        align-items: center;
+}
+.text{
+    height: fit-content;
+    padding: 0 5rem;
+    font-size: 1.5rem;
+    display: flex;
+    /* background-color: #0b82f9; */
+    align-items: center;
+    justify-content: center;
+
+}
+.text p{
+    height: auto;
+}
+.aboutBtn{
+    font-size: 1.2rem;
+    padding: 1rem 2rem;
+    text-transform: capitalize;
+}
+
+.cir-btn{
+    width: clamp(9em, 12vw, 11em);
+    height: clamp(9em, 12vw, 11em);
+    background-color: var(--white);
+    color: var(--t3);
+    font-size: 1.4rem;
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    position: relative;
+    top: 33%;
+    transition: var(--animation-smooth);
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+}
+.cir-btn:hover{
+    color: var(--white);
+
+}
+.cir-btn:hover::before {
+    bottom:  0;
+    border-radius: 0;
+}
+
+.cir-btn::before {
+    content: "";
+    height: 100%;
+    width: 100%;
+    background-color: var(--black);
+    position: absolute;
+    bottom:  -120%;
+    left: 0;
+    transition: var(--animation-smooth);
+    border-radius: 120%;
+    z-index: 1;
+}
+
+.z-2{
+    z-index: 3;
+}
+
+.letes-work{
+    width: 100%;
+    background-color:var(--white);
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 0 15rem;
+}
+.tag{
+    text-transform: uppercase;
+    padding: 2rem 0;
+    font-size: 1rem;
+    color: var(--black);
+}
+ .letes-work ul{
+    /* padding: 0 5rem; */
+    list-style-type: none;
+    color: var(--black);
+} 
+.letes-work .project_name{
+    font-size: 4.5rem;
+}
+.letes-work .project_desc{
+    font-size: 1.5rem;
+}
+.letes-work ul li{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--t1);
+    border-top: 1px solid var(--t1);
+    border-bottom: 1px solid var(--t1);
 }
