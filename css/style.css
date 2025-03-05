@@ -59,10 +59,10 @@ body{
    scroll-behavior: smooth;
 }
 body{
+    overflow-x: hidden;
     transition: var(--animation-primary);
 }
 #main{
-    overflow-x: hidden;
     position: relative;
 }
 
@@ -721,3 +721,14 @@ position: relative;
     margin: 0 auto;
 }
  
+/* Working Sections */
+#work_sec-1{
+    height: 100vh;
+    width: 100%;
+    background-color: var(--t3);
+    color: var(--white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
