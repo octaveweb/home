@@ -178,3 +178,57 @@ window.addEventListener("scroll", () => {
   menuBtn.style.transform = scrolled > 10 || menuBox.style.transform === "translateX(0%)" ? "scale(1)" : "scale(0)";
   menuBtn.style.opacity = scrolled > 10 || menuBox.style.transform === "translateX(0%)" ? "100%" : "0%";
 });
+
+// Work Section
+const workList = document.querySelector(".letes-work ul");
+const workItems = document.querySelectorAll(".letes-work ul li");
+const workImage = document.querySelector(".work-image");
+const workImageContainer = document.querySelector(".work-image .image-container");
+
+let workImageWidth = workImage.offsetWidth;
+let workImageHeight = workImage.offsetHeight;
+
+window.addEventListener("resize", () => {
+    workImageWidth = workImage.offsetWidth;
+    workImageHeight = workImage.offsetHeight;
+});
+
+document.addEventListener("mousemove", (e) => {
+    if (workList.matches(":hover")) {
+        const x = e.clientX - workImageWidth / 2;
+        const y = e.clientY - workImageHeight / 2;
+        workImage.style.transform = `translate(${x}px, ${y}px) scale(1)`;
+    }
+});
+
+workItems.forEach((item, index) => {
+    item.addEventListener("mouseenter", (event) => {
+        workImage.classList.add("active");
+        workImage.style.opacity = "1";
+
+        // Move to the hovered image smoothly
+        const targetPosition = index * workImageHeight;
+        workImageContainer.style.transform = `translateY(-${targetPosition}px)`;
+    });
+
+    item.addEventListener("mouseleave", () => {
+        workImage.classList.remove("active");
+    });
+
+    // Click event to open a link (example array)
+    item.addEventListener("click", () => {
+        const links = [
+            "https://example.com/link1",
+            "https://example.com/link2",
+            "https://example.com/link3",
+            "https://example.com/link4"
+        ];
+        window.open(links[index], "_blank");
+    });
+});
+
+workList.addEventListener("mouseleave", () => {
+    workImage.style.transform = "scale(0)";
+    workImage.style.opacity = "0";
+    workImage.classList.remove("active");
+});

@@ -151,7 +151,8 @@ nav {
 
 /* Optional: Apply to the entire page */
 ::selection {
-    background-color: #5404ff9e
+    background-color: #1e8fffd5;
+    color: #fff;
 }
 
 
@@ -554,19 +555,21 @@ position: relative;
 #sec-3{
     height: fit-content;
     width: 100%;
+    background-color: var(--white);
+    padding: 2rem 13rem;
+    position: relative;
 }
 #sec-3 .text-con{
        display: grid;
         grid-template-columns: 70% 30%;
         grid-template-rows: 40% 60%;
         gap: 2rem;
-        padding: 10rem 5rem 0 5rem;
+        padding-top: 10rem;
         /* background-color: blueviolet; */
         align-items: center;
 }
 .text{
     height: fit-content;
-    padding: 0 5rem;
     font-size: 1.5rem;
     display: flex;
     /* background-color: #0b82f9; */
@@ -586,21 +589,23 @@ position: relative;
 .cir-btn{
     width: clamp(9em, 12vw, 11em);
     height: clamp(9em, 12vw, 11em);
-    background-color: var(--white);
-    color: var(--t3);
+    background-color: var(--black);
+    color: var(--white);
     font-size: 1.4rem;
     border-radius: 50%;
     border: none;
-    outline: none;
+    outline:none;
     position: relative;
     top: 33%;
     transition: var(--animation-smooth);
     display: grid;
     place-items: center;
     overflow: hidden;
+    box-shadow: 0px 0px 0px .5px #000000;
+    cursor: pointer;
 }
 .cir-btn:hover{
-    color: var(--white);
+    color: var(--black);
 
 }
 .cir-btn:hover::before {
@@ -612,7 +617,7 @@ position: relative;
     content: "";
     height: 100%;
     width: 100%;
-    background-color: var(--black);
+    background-color: var(--white);
     position: absolute;
     bottom:  -120%;
     left: 0;
@@ -627,34 +632,92 @@ position: relative;
 
 .letes-work{
     width: 100%;
-    background-color:var(--white);
     display: grid;
     grid-template-columns: 1fr;
-    padding: 0 15rem;
+    /* padding: 0 5rem; */
 }
 .tag{
     text-transform: uppercase;
     padding: 2rem 0;
-    font-size: 1rem;
-    color: var(--black);
+   font-size: 1rem;
+    
 }
- .letes-work ul{
-    /* padding: 0 5rem; */
+.letes-work ul {
     list-style-type: none;
-    color: var(--black);
-} 
-.letes-work .project_name{
-    font-size: 4.5rem;
+
 }
-.letes-work .project_desc{
-    font-size: 1.5rem;
-}
-.letes-work ul li{
+
+.letes-work ul li {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 0;
-    border-bottom: 1px solid var(--t1);
-    border-top: 1px solid var(--t1);
-    border-bottom: 1px solid var(--t1);
+    padding: 1.5rem 0;
+    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    cursor: pointer;
+    transition: opacity 0.3s ease, filter 0.3s ease;
+    position: relative;
 }
+
+/* .letes-work ul:hover li {
+    opacity: 0.3;
+    filter: blur(5px);
+} */
+
+.letes-work ul li:hover {
+    opacity: 1;
+    filter: blur(0);
+}
+
+.project_name {
+    font-size: 3rem;
+    font-weight: bold;
+    position: relative;
+    left: 8%;
+}
+
+.project_desc {
+    font-size: 1.2rem;
+    position: relative;
+    right: 8%;
+}
+
+/* Floating Work Image */
+.work-image {
+    position: absolute;
+    width: 300px;
+    height: 400px;
+    background-color: #0b82f9;
+    border-radius: 20px;
+    transform: scale(0);
+    opacity: 0;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    pointer-events: none;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+}
+
+.image-container {
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.5s ease-in-out;
+    position: relative;
+}
+.view{
+    font-size: 25px;
+    position: absolute;
+    z-index: 5;
+}
+.work-image img {
+    width: 100%;
+    height:400px;
+    object-fit: cover;
+    position: relative;
+    z-index: 2;
+}
+.more_work_btn{
+    width: 20%;
+    margin: 0 auto;
+}
+ 
