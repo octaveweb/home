@@ -13,6 +13,53 @@
 // });
 // }
 // preventTofightClick();
+
+function customCursor() {
+  const cursor = document.createElement("div");
+  cursor.classList.add("custom-cursor");
+  document.body.appendChild(cursor);
+
+  let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0;
+
+  document.addEventListener("mousemove", (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+  });
+
+  function animateCursor() {
+    cursorX += (mouseX - cursorX) * 0.2;
+    cursorY += (mouseY - cursorY) * 0.2;
+    cursor.style.left = `${cursorX}px`;
+    cursor.style.top = `${cursorY}px`;
+    requestAnimationFrame(animateCursor);
+  }
+
+  animateCursor();
+
+  document.addEventListener("mouseover", (e) => {
+    if (e.target.classList.contains("cursor-grow")) {
+      cursor.classList.add("grow");
+    }
+  });
+
+  document.addEventListener("mouseout", (e) => {
+    if (e.target.classList.contains("cursor-grow")) {
+      cursor.classList.remove("grow");
+    }
+  });
+
+  document.addEventListener("mousedown", () => {
+    cursor.classList.add("click");
+  });
+
+  document.addEventListener("mouseup", () => {
+    cursor.classList.remove("click");
+  });
+}
+
+customCursor();
+
+
 // Initialize Lenis
 const lenis = new Lenis({ autoRaf: true });
 lenis.on("scroll", console.log);
@@ -143,48 +190,61 @@ function slide() {
 slide();
 
 
+document.addEventListener("DOMContentLoaded", () => {
+  const menuBtn = document.getElementById("menuBtn");
+  const menuBox = document.getElementById("menu-box");
+  const progressBar = document.querySelector(".progress-bar");
 
+  if (menuBtn && menuBox) {
+    const menuIcon = menuBtn.querySelector("i");
 
-// Menu Toggle & Animation
-const menuBtn = document.getElementById("menuBtn");
-const menuBox = document.getElementById("menu-box");
-const menuIcon = menuBtn.querySelector("i");
+    function toggleMenu() {
+      const isOpen = menuBox.style.transform === "translateX(0%)";
+      menuBox.style.transform = isOpen ? "translateX(100%)" : "translateX(0%)";
+      document.body.style.overflow = isOpen ? "scroll" : "hidden";
+      menuBox.style.borderRadius = isOpen ? "50%" : "0";
+      menuIcon.classList.toggle("fa-xmark", !isOpen);
+      menuIcon.classList.toggle("fa-bars", isOpen);
 
-function toggleMenu() {
-  const isOpen = menuBox.style.transform === "translateX(0%)";
-  menuBox.style.transform = isOpen ? "translateX(100%)" : "translateX(0%)";
-  document.body.style.overflow = isOpen ? "scroll" : "hidden";
-  menuBox.style.borderRadius = isOpen ? "50%" : "0";
-  menuIcon.classList.toggle("fa-xmark", !isOpen);
-  menuIcon.classList.toggle("fa-bars", isOpen);
+      gsap.to("#menu-box ul li", {
+        x: isOpen ? 100 : 0,
+        opacity: isOpen ? 0 : 1,
+        duration: 0.5,
+        stagger: 0.2,
+      });
+    }
 
-  gsap.to("#menu-box ul li", {
-    x: isOpen ? 100 : 0,
-    opacity: isOpen ? 0 : 1,
-    duration: 0.5,
-    stagger: 0.2,
-  });
-}
-menuBtn.addEventListener("click", toggleMenu);
+    menuBtn.addEventListener("click", toggleMenu);
+  }
 
-// Scroll Progress Bar
-const progressBar = document.querySelector(".progress-bar");
-window.addEventListener("scroll", () => {
-  let scrolled =
-    (document.documentElement.scrollTop /
-      (document.documentElement.scrollHeight - document.documentElement.clientHeight)) *
-    100;
-  progressBar.style.width = scrolled + "%";
-  menuBtn.style.transform = scrolled > 10 || menuBox.style.transform === "translateX(0%)" ? "scale(1)" : "scale(0)";
-  menuBtn.style.opacity = scrolled > 10 || menuBox.style.transform === "translateX(0%)" ? "100%" : "0%";
+  if (progressBar) {
+    window.addEventListener("scroll", () => {
+      let scrolled =
+        (document.documentElement.scrollTop /
+          (document.documentElement.scrollHeight - document.documentElement.clientHeight)) *
+        100;
+      progressBar.style.width = scrolled + "%";
+
+      if (menuBtn && menuBox) {
+        menuBtn.style.transform =
+          scrolled > 10 || menuBox.style.transform === "translateX(0%)" ? "scale(1)" : "scale(0)";
+        menuBtn.style.opacity =
+          scrolled > 10 || menuBox.style.transform === "translateX(0%)" ? "100%" : "0%";
+      }
+    });
+  }
 });
+
+
+
+
+function workSection() {
 
 // Work Section
 const workList = document.querySelector(".letes-work ul");
 const workItems = document.querySelectorAll(".letes-work ul li");
 const workImage = document.querySelector(".work-image");
 const workImageContainer = document.querySelector(".work-image .image-container");
-
 let workImageWidth = workImage.offsetWidth;
 let workImageHeight = workImage.offsetHeight;
 
@@ -194,11 +254,13 @@ window.addEventListener("resize", () => {
 });
 
 document.addEventListener("mousemove", (e) => {
-    if (workList.matches(":hover")) {
-        const x = e.clientX - workImageWidth / 2;
-        const y = e.clientY - workImageHeight / 2;
-        workImage.style.transform = `translate(${x}px, ${y}px) scale(1)`;
-    }
+  const { clientX: x, clientY: y } = e;
+  
+  if (workList.matches(":hover")) {
+      const offsetX = x - workImage.offsetWidth / 2;
+      const offsetY = y - workImage.offsetHeight / 2;
+      workImage.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(1)`;
+  }
 });
 
 workItems.forEach((item, index) => {
@@ -232,3 +294,6 @@ workList.addEventListener("mouseleave", () => {
     workImage.style.opacity = "0";
     workImage.classList.remove("active");
 });
+}
+
+  workSection();
