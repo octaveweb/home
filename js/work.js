@@ -167,13 +167,6 @@ document.addEventListener("DOMContentLoaded", () => {
       menuBtn.addEventListener("click", toggleMenu);
     }
   
-    if (progressBar) {
-      window.addEventListener("scroll", () => {
-        let scrolled =
-          (document.documentElement.scrollTop /
-            (document.documentElement.scrollHeight - document.documentElement.clientHeight)) *
-          100;
-        progressBar.style.width = scrolled + "%";
   
         if (menuBtn && menuBox) {
           menuBtn.style.transform =
@@ -182,6 +175,5 @@ document.addEventListener("DOMContentLoaded", () => {
             scrolled > 10 || menuBox.style.transform === "translateX(0%)" ? "100%" : "0%";
         }
       });
-    }
-  });
+  
   
