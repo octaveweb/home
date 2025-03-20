@@ -1,3 +1,4 @@
 {
-    "pieces.cloudCapabilities": "Local"
+    "pieces.cloudCapabilities": "Local",
+    "liveServer.settings.port": 5501
 }

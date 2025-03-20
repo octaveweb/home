@@ -153,41 +153,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 moonSun.addEventListener("click", toggleTheme);
 
-function slide() {
-  const slides = document.querySelectorAll(".slide");
-  let currentIndex = 0;
-
-  function updateSlides() {
-    slides.forEach((slide, index) => {
-      slide.classList.remove("active");
-      const newIndex = (currentIndex + index) % slides.length;
-      
-      let position;
-      if (newIndex === 0) {
-        position = "-115%"; // Left-most slide
-      } else if (newIndex === 2) {
-        position = "115%"; // Right-most slide
-      } else {
-        position = "0"; // Center slide
-      }
-
-      slide.style.transform = `translateX(${position}) scale(${newIndex === 1 ? 1.7 : 0.5})`;
-      slide.style.opacity = newIndex === 1 ? 1 : 0.5;
-    });
-
-    slides[1].classList.add("active");
-  }
-
-  function nextSlide() {
-    currentIndex = (currentIndex + 1) % slides.length;
-    updateSlides();
-  }
-
-  updateSlides();
-  setInterval(nextSlide, 4500);
-}
-
-slide();
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -217,22 +182,7 @@ document.addEventListener("DOMContentLoaded", () => {
     menuBtn.addEventListener("click", toggleMenu);
   }
 
-  if (progressBar) {
-    window.addEventListener("scroll", () => {
-      let scrolled =
-        (document.documentElement.scrollTop /
-          (document.documentElement.scrollHeight - document.documentElement.clientHeight)) *
-        100;
-      progressBar.style.width = scrolled + "%";
 
-      if (menuBtn && menuBox) {
-        menuBtn.style.transform =
-          scrolled > 10 || menuBox.style.transform === "translateX(0%)" ? "scale(1)" : "scale(0)";
-        menuBtn.style.opacity =
-          scrolled > 10 || menuBox.style.transform === "translateX(0%)" ? "100%" : "0%";
-      }
-    });
-  }
 });
 
 
@@ -297,3 +247,26 @@ workList.addEventListener("mouseleave", () => {
 }
 
   workSection();
+
+
+  gsap.to(".cir-l", {
+    scale: 1.1,
+    boxShadow: "0px 0px 20px 40px var(--theme), 0px 0px 60px 80px var(--white), 0px 0px 100px 160px var(--theme)",
+    repeat: -1,
+    yoyo: true,
+    duration: 2,
+    ease: "power1.inOut"
+});
+
+// Mouse Move Effect
+document.addEventListener("mousemove", (e) => {
+    const x = (e.clientX / window.innerWidth - 0.5) * 20;
+    const y = (e.clientY / window.innerHeight - 0.5) * 20;
+
+    gsap.to(".cir-l", {
+        x: x,
+        y: y,
+        duration: 0.5,
+        ease: "power2.out"
+    });
+});

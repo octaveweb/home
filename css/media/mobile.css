@@ -1,7 +1,7 @@
-@media only screen and (min-width: 0px) and (max-width: 500px) {
+@media only screen and (min-width: 0px) and (max-width: 600px) {
     
     nav{
-        background-color: aqua;
+        /* background-color: aqua; */
         height: fit-content;
     }
     .logo p {
@@ -16,18 +16,31 @@
         color: var(--theme);
         padding: 1rem;
     }
+    .land-page {
+        height: 75vh;
+    }
     .break {
         margin: 0;
     }
+    #moonSun{
+        display: none;
+    }
     #menu-box {
         width: 100%;
+    }
+    #menuBtn{
+        position: fixed;
+        top: 3.5%;
+        right: 10%;
     }
     .social-media{
         /* background-color: var(--white); */
         width: 100%;
         position: absolute;
         bottom: 8%;
-    
+    }
+    .custom-cursor{
+        display: none;
     }
     
     .social-media ul{
@@ -47,5 +60,16 @@
     
 #sec-2 .text-con{
    display: none;
+}
+
+
+.content {
+    width: 100%;
+}
+.content p {
+    padding: 20px 100px;
+}
+.content h1 span {
+    font-size: 4rem;
 }
  }
