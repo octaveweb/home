@@ -72,4 +72,15 @@
 .content h1 span {
     font-size: 4rem;
 }
+
+
+
+
+.work_sec-content p{
+    font-size: 10vw;
+}
+.work_sec-content ul{
+    width: 100%;
  }
+
+}
