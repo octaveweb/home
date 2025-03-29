@@ -116,7 +116,7 @@ body{
 
 nav {
     /* background-color: var(--transparent); */
-    height: 14vh;
+    height: 12vh;
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -124,13 +124,14 @@ nav {
     font-family: var(--font-3);
     position: absolute;
     top: 0;
-    z-index: 10;
+    left: 0;
+    z-index: 12;
 
 
 }
 .top-nav{
     position: relative;
-    right: 8%;
+    z-index: 10;
 }
 .logo {
     display: flex;
@@ -168,6 +169,8 @@ nav {
     display: inline-block;
     font-size: 2rem;
     font-weight: 500;
+    color: var(--black);
+    text-shadow: 2px 2px 0 var(--white);
   
 }
 
@@ -325,9 +328,6 @@ body.dark-mode #moonSun:hover img.sun {
     height: 5rem;
     width: 5rem;
     font-size: 1.5rem;
-    position: fixed;
-    top: 2%;
-    right: 3%;
     border-radius: 50%;
     padding: 0;
     display: flex;
@@ -347,7 +347,7 @@ body.dark-mode #moonSun:hover img.sun {
     top: 0;
     transform: translateX(100%);
     transition: var(--animation-slow);
-    z-index: 9998;
+    z-index: 999;
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -435,8 +435,6 @@ list-style-type: none;
     display: flex;
     justify-content: center;
     align-items: flex-end;
-position: relative;
-
 }    .land-page {
     display: flex;
     justify-content: center;
@@ -614,6 +612,7 @@ position: relative;
     height: fit-content;
     width: 100%;
     background-color: var(--white);
+    color: var(--black);
     padding: 2rem 13rem;
     position: relative;
 }
